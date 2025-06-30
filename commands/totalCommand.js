@@ -31,7 +31,7 @@ module.exports = function(bot) {
             let message = `💰 Total Expenses for ${month}/${year}\n\n`;
             message += `Total Amount: ${totalAmount}\n`;
             message += `Number of Members: ${uniqueUsers.length}\n\n`;
-            message += 'Individual Totals:\n';
+            message += '💵 Individual Totals:\n\n';
 
             for (const username of uniqueUsers) {
                 const userExpenses = expenses.filter(expense => expense.username === username);

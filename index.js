@@ -69,20 +69,3 @@ async function sendMonthlySummary(chatId) {
 
     bot.sendMessage(chatId, message);
 }
-
-function scheduleMonthlySummary() {
-    const now = new Date();
-    const lastDay = new Date(now.getFullYear(), now.getMonth() + 1, 0);
-    const timeUntilMidnight = lastDay - now;
-
-    setTimeout(() => {
-        Expense.distinct('groupId').then(groupIds => {
-            groupIds.forEach(chatId => {
-                sendMonthlySummary(chatId);
-            });
-        });
-        scheduleMonthlySummary();
-    }, timeUntilMidnight);
-}
-
-scheduleMonthlySummary();
